@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鲸鱼AI科技教育体验馆项目展示</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14212b;
+      --muted: #5c6b76;
+      --soft: #eef4f7;
+      --paper: #f7f9fb;
+      --panel: #ffffff;
+      --line: #dbe5eb;
+      --blue: #1768a6;
+      --teal: #1397a3;
+      --green: #2d7d54;
+      --gold: #c98212;
+      --red: #b74b4b;
+      --shadow: 0 18px 45px rgba(21, 43, 59, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; }
+
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(7, 18, 31, .84), rgba(7, 18, 31, .42) 58%, rgba(7, 18, 31, .2)),
+        url("assets/project/project-01.jpg") center / cover no-repeat;
+      padding: 42px 6vw 34px;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: rgba(255,255,255,.82);
+      font-size: 15px;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin: 0;
+      font-size: clamp(36px, 5.8vw, 68px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 820px;
+      margin: 20px 0 28px;
+      color: rgba(255,255,255,.9);
+      font-size: 18px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 980px;
+    }
+
+    .hero-metric {
+      border: 1px solid rgba(255,255,255,.26);
+      background: rgba(255,255,255,.13);
+      backdrop-filter: blur(12px);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .hero-metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.12;
+    }
+
+    .hero-metric span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 40px 0 76px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 12px 0 18px;
+      background: rgba(247, 249, 251, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #263844;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 14px;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 22px;
+      align-items: stretch;
+      margin: 10px 0 46px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0; }
+
+    .lead {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .allocation {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .allocation-row {
+      display: grid;
+      grid-template-columns: 86px 1fr 76px;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: #e8eef2;
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+    }
+
+    .strategy {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .strategy-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .strategy-card img {
+      width: 100%;
+      height: 138px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .strategy-card div {
+      padding: 13px 14px 15px;
+    }
+
+    .strategy-card strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .strategy-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 50px;
+      scroll-margin-top: 86px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .amount {
+      min-width: 148px;
+      text-align: right;
+      font-size: 32px;
+      line-height: 1.08;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .amount span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proof-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(21, 43, 59, .08);
+    }
+
+    .proof-card.wide {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .proof-card img {
+      width: 100%;
+      height: 230px;
+      display: block;
+      object-fit: cover;
+      cursor: zoom-in;
+      background: #e1e9ee;
+    }
+
+    .proof-card.wide img {
+      height: 100%;
+      min-height: 280px;
+    }
+
+    .proof-body {
+      padding: 18px;
+    }
+
+    .proof-body p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #34505e;
+      font-size: 13px;
+    }
+
+    .section-note {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .section-note div {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-note strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 34px 0 8px;
+    }
+
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .timeline-item img {
+      width: 100%;
+      height: 118px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .timeline-item div {
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .catalog figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .catalog img {
+      width: 100%;
+      height: 168px;
+      display: block;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .catalog figcaption {
+      min-height: 52px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #334957;
+    }
+
+    .footer {
+      margin-top: 50px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding-top: 18px;
+      font-size: 13px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 12, 20, .88);
+      padding: 22px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 94vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 22px 72px rgba(0,0,0,.45);
+    }
+
+    .close {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.34);
+      color: #fff;
+      background: rgba(255,255,255,.12);
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .overview,
+      .strategy,
+      .section-note,
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-grid,
+      .catalog {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .proof-card.wide {
+        grid-column: span 2;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: 82vh;
+        padding: 34px 18px 26px;
+      }
+
+      main {
+        width: min(100% - 28px, 1180px);
+        padding-top: 28px;
+      }
+
+      .panel { padding: 20px; }
+      .section-head { grid-template-columns: 1fr; }
+      .amount { text-align: left; }
+      .proof-grid,
+      .catalog {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-card.wide {
+        grid-column: span 1;
+      }
+
+      .allocation-row {
+        grid-template-columns: 78px 1fr 68px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">三新消费项目展示 / 科技教育体验空间</p>
+      <h1>鲸鱼AI科技教育体验馆项目建设成果展示</h1>
+      <p class="hero-copy">围绕空间场景、智能设备、课程活动、品牌传播与运营服务五个维度，系统呈现项目从建设落地到开放运营的整体形象与体验价值。</p>
+      <div class="hero-grid">
+        <div class="hero-metric"><strong>30000万元</strong><span>项目总投资</span></div>
+        <div class="hero-metric"><strong>2886万元</strong><span>三新消费相关投资</span></div>
+        <div class="hero-metric"><strong>5大板块</strong><span>覆盖建设到开放运营</span></div>
+        <div class="hero-metric"><strong>63张图</strong><span>现场照片与项目图册</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#overview">投资总览</a>
+      <a href="#scene">场景改造</a>
+      <a href="#equipment">智能设备</a>
+      <a href="#content">课程内容</a>
+      <a href="#brand">品牌推广</a>
+      <a href="#operation">日常运营</a>
+      <a href="#catalog">项目图册</a>
+    </nav>
+
+    <section class="overview" id="overview">
+      <div class="panel">
+        <h2>项目展示逻辑</h2>
+        <p class="lead">本页面从“整体投入、空间呈现、设备能力、课程内容、品牌活动、运营服务”六个层次展开。先展示项目投资结构，再以图文结合的方式呈现各板块建设亮点，最后保留完整项目图册，便于客户快速了解项目全貌。</p>
+        <div class="strategy">
+          <div class="strategy-card">
+            <img src="assets/project/project-01.jpg" alt="鲸鱼机器人展厅">
+            <div><strong>空间呈现</strong><span>展厅、工坊、MR空间和互动区共同构成沉浸式体验环境。</span></div>
+          </div>
+          <div class="strategy-card">
+            <img src="assets/project/project-02.jpg" alt="AI咖啡机器人">
+            <div><strong>设备能力</strong><span>AI咖啡机器人、机器狗、AI眼镜等设备强化科技感和互动体验。</span></div>
+          </div>
+          <div class="strategy-card">
+            <img src="assets/project/project-28.jpg" alt="脑控赛车">
+            <div><strong>运营活力</strong><span>课程、竞赛、开业活动和现场服务共同支撑持续运营。</span></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h2>投资构成</h2>
+        <p class="lead">三新消费相关投资小计 2886 万元。</p>
+        <div class="allocation">
+          <div class="allocation-row"><strong>场景改造</strong><div class="bar"><i style="width:41.6%"></i></div><span>1200万</span></div>
+          <div class="allocation-row"><strong>智能设备</strong><div class="bar"><i style="width:29.5%"></i></div><span>850万</span></div>
+          <div class="allocation-row"><strong>课程内容</strong><div class="bar"><i style="width:10.4%"></i></div><span>300万</span></div>
+          <div class="allocation-row"><strong>品牌推广</strong><div class="bar"><i style="width:6.9%"></i></div><span>200万</span></div>
+          <div class="allocation-row"><strong>日常运营</strong><div class="bar"><i style="width:11.6%"></i></div><span>336万</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="scene">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">01 / 新消费场景改造</p>
+          <h2>打造可参观、可体验、可停留的科技教育空间</h2>
+          <p class="lead">围绕鲸鱼AI科技教育体验馆、AIGC影像与全景3D视频创作中心、激光3D打印工作坊、智能机器人体验区、无人机互动展区等核心区块进行整体规划与场景打造。</p>
+        </div>
+        <div class="amount">1200万<span>空间建设与体验动线</span></div>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card wide">
+          <img src="assets/project/project-01.jpg" alt="鲸鱼机器人展厅">
+          <div class="proof-body">
+            <span class="label">核心展厅</span>
+            <h3>鲸鱼机器人展厅形成项目核心展示面</h3>
+            <p>该区域承担品牌识别、展项导入和参观动线组织功能，是客户进入场馆后最先感知到的科技教育场景。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-08.jpg" alt="MR大空间">
+          <div class="proof-body">
+            <span class="label">沉浸空间</span>
+            <h3>MR大空间承接沉浸式互动体验</h3>
+            <p>面向团队体验、亲子互动和沉浸式课程，展示虚实融合空间的参与感和科技感。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-10.jpg" alt="智造创刻工坊">
+          <div class="proof-body">
+            <span class="label">创客工坊</span>
+            <h3>智造创刻工坊承载动手实践课程</h3>
+            <p>可承接3D打印、激光创刻、创客课程和研学实践活动，让科技教育从观看延伸到动手创造。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-09.jpg" alt="悦动格子">
+          <div class="proof-body">
+            <span class="label">互动区块</span>
+            <h3>悦动格子增强亲子互动和停留时间</h3>
+            <p>体感互动类项目能提升参与度，适合亲子客群停留、体验和二次传播。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="equipment">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">02 / 智能设备及配套系统</p>
+          <h2>以高感知智能设备强化场馆科技体验</h2>
+          <p class="lead">覆盖AI机器人、无人机、VR/AR互动设备、全息投影、智能导览系统、机器人NPC、大型互动屏幕、AI编程教具、3D打印机，以及线上预约、小程序和私域流量工具等。</p>
+        </div>
+        <div class="amount">850万<span>设备配置与系统建设</span></div>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card wide">
+          <img src="assets/project/project-02.jpg" alt="AI咖啡机器人">
+          <div class="proof-body">
+            <span class="label">高价值设备</span>
+            <h3>AI咖啡机器人呈现智能服务与消费体验结合</h3>
+            <p>自动化服务终端让科技体验延伸到消费服务环节，增强场馆的品质感、互动感和商业化想象空间。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-06.jpg" alt="宇树Go2机器狗">
+          <div class="proof-body">
+            <span class="label">机器人硬件</span>
+            <h3>宇树 Go2 机器狗体现机器人设备投入</h3>
+            <p>机器狗具备较强现场吸引力，可用于迎宾互动、科普展示和活动演示。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-11.jpg" alt="AI眼镜体验">
+          <div class="proof-body">
+            <span class="label">智能穿戴</span>
+            <h3>AI眼镜体验补充AR/AI终端品类</h3>
+            <p>AI眼镜丰富了数字体验终端品类，强化场馆在智能穿戴和AR体验方面的展示能力。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-32.jpg" alt="下棋机器人">
+          <div class="proof-body">
+            <span class="label">交互机器人</span>
+            <h3>下棋机器人体现人机交互能力</h3>
+            <p>下棋机器人将AI算法、机械执行和人机互动结合，适合用于科普讲解和互动体验。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="content">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">03 / AI课程活动及数字内容制作</p>
+          <h2>把智能设备转化为课程、活动和内容体验</h2>
+          <p class="lead">围绕AI科普研学课程、短视频内容、沉浸式体验、AI竞赛活动、直播传播、内容IP开发和AI编程互动体验进行体系化设计。</p>
+        </div>
+        <div class="amount">300万<span>课程研发与内容活动</span></div>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card wide">
+          <img src="assets/project/project-28.jpg" alt="脑控赛车">
+          <div class="proof-body">
+            <span class="label">AI互动课程</span>
+            <h3>脑控赛车适合作为AI科普和脑机互动课程亮点</h3>
+            <p>该项目具备强体验感和传播点，可用于研学课程、科普活动、短视频内容和主题挑战赛。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-12.jpg" alt="投篮机器人">
+          <div class="proof-body">
+            <span class="label">活动项目</span>
+            <h3>投篮机器人适合组织挑战赛和现场活动</h3>
+            <p>可作为亲子挑战、AI运动互动和社群活动的内容模块，提升现场参与热度。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-30.jpg" alt="小派8K超高清VR体验">
+          <div class="proof-body">
+            <span class="label">VR内容</span>
+            <h3>小派8K超高清VR体验支撑沉浸内容制作</h3>
+            <p>高清VR体验可承接沉浸式内容展示，也适合用于新媒体传播和客户体验演示。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/project/project-31.jpg" alt="3D大屏电影">
+          <div class="proof-body">
+            <span class="label">数字影像</span>
+            <h3>3D大屏电影呈现AIGC影像和内容展示能力</h3>
+            <p>大屏影像内容增强视觉冲击力，可用于展示全景视频、沉浸式影像和主题课程内容。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="brand">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">04 / AI相关品牌推广</p>
+          <h2>通过开业发布、签约仪式和现场传播建立品牌声量</h2>
+          <p class="lead">围绕品牌开业发布会、AI科普活动启动仪式、线上线下宣传、市场引流和合作伙伴联动进行品牌传播。</p>
+        </div>
+        <div class="amount">200万<span>发布会、宣传与引流</span></div>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card wide">
+          <img src="assets/brand/brand-09.jpg" alt="开业门头与嘉宾合影">
+          <div class="proof-body">
+            <span class="label">开业发布</span>
+            <h3>开业门头与嘉宾合影呈现品牌发布氛围</h3>
+            <p>该画面集中展示开业节点、门头形象和现场人气，适合作为客户了解项目品牌形象的主视觉。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/brand/brand-05.jpg" alt="品牌活动主视觉">
+          <div class="proof-body">
+            <span class="label">主视觉</span>
+            <h3>活动大屏强化品牌统一传播</h3>
+            <p>活动大屏统一呈现品牌主张，有助于提升开业发布会和线下活动的专业感。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/brand/brand-07.jpg" alt="签约仪式">
+          <div class="proof-body">
+            <span class="label">合作传播</span>
+            <h3>签约仪式展示项目合作和市场背书</h3>
+            <p>签约仪式强化合作伙伴联动，提升项目可信度和传播话题。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/brand/brand-03.jpg" alt="发布会观众">
+          <div class="proof-body">
+            <span class="label">活动人气</span>
+            <h3>现场观众体现品牌活动触达</h3>
+            <p>现场观众画面呈现活动热度，有助于展示客群触达和品牌吸引力。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="operation">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">05 / 日常运营保障</p>
+          <h2>以人员服务场景呈现开放运营和持续接待能力</h2>
+          <p class="lead">围绕场馆管理、接待讲解、课程服务、设备维护、物业保障和活动执行等日常运营工作，呈现场馆稳定开放的服务基础。</p>
+        </div>
+        <div class="amount">336万<span>人员服务与运营保障</span></div>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card wide">
+          <img src="assets/operation/operation-01.jpg" alt="工作人员讲解互动">
+          <div class="proof-body">
+            <span class="label">讲解服务</span>
+            <h3>馆内人员指导体验，呈现专业服务能力</h3>
+            <p>现场讲解和互动指导让客户更直观地感受到场馆的课程服务、接待能力和运营温度。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/operation/operation-03.jpg" alt="工作人员操作设备">
+          <div class="proof-body">
+            <span class="label">设备维护</span>
+            <h3>工作人员操作设备，保障体验顺畅开展</h3>
+            <p>设备运行、调试维护和现场看护共同保障客户体验的安全性和稳定性。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/operation/operation-06.jpg" alt="开业接待">
+          <div class="proof-body">
+            <span class="label">接待执行</span>
+            <h3>开业期间接待体现初期运营筹备</h3>
+            <p>开业期间的接待画面体现活动执行、嘉宾接待和现场组织能力。</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="assets/operation/operation-09.jpg" alt="嘉宾带看">
+          <div class="proof-body">
+            <span class="label">运营带看</span>
+            <h3>馆内带看展示持续接待能力</h3>
+            <p>馆内带看场景展示项目开放后的参观接待、商务讲解和客户服务能力。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="timeline" aria-label="从建设到运营的项目展示链路">
+      <div class="timeline-item">
+        <img src="assets/project/project-01.jpg" alt="展厅建设成果">
+        <div><strong>建设完成</strong><span>展厅空间与导视体系</span></div>
+      </div>
+      <div class="timeline-item">
+        <img src="assets/project/project-02.jpg" alt="AI咖啡机器人">
+        <div><strong>设备入场</strong><span>智能设备采购安装</span></div>
+      </div>
+      <div class="timeline-item">
+        <img src="assets/project/project-28.jpg" alt="脑控赛车">
+        <div><strong>内容开发</strong><span>AI课程与互动活动</span></div>
+      </div>
+      <div class="timeline-item">
+        <img src="assets/brand/brand-09.jpg" alt="开业活动">
+        <div><strong>品牌发布</strong><span>开业传播和引流</span></div>
+      </div>
+      <div class="timeline-item">
+        <img src="assets/operation/operation-01.jpg" alt="馆内工作场景">
+        <div><strong>日常运营</strong><span>人员服务和维护保障</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">新增项目图片提取包</p>
+          <h2>32张项目图片完整图册</h2>
+          <p class="lead">以下素材完整保留新增图片包内容，可作为客户沟通、项目介绍和后续宣传的补充图片库。</p>
+        </div>
+        <div class="amount">32张<span>新增素材</span></div>
+      </div>
+
+      <div class="catalog">
+        <figure><img src="assets/project/project-01.jpg" alt="鲸鱼机器人展厅"><figcaption>01 鲸鱼机器人展厅</figcaption></figure>
+        <figure><img src="assets/project/project-02.jpg" alt="AI咖啡机器人"><figcaption>02 AI咖啡机器人</figcaption></figure>
+        <figure><img src="assets/project/project-03.jpg" alt="自动化集装箱无人码头"><figcaption>03 自动化集装箱无人码头</figcaption></figure>
+        <figure><img src="assets/project/project-04.jpg" alt="汽车制造智能无人工厂"><figcaption>04 汽车制造智能无人工厂</figcaption></figure>
+        <figure><img src="assets/project/project-05.jpg" alt="机器人舞蹈表演"><figcaption>05 机器人舞蹈表演</figcaption></figure>
+        <figure><img src="assets/project/project-06.jpg" alt="宇树Go2机器狗"><figcaption>05B 宇树 Go2 机器狗</figcaption></figure>
+        <figure><img src="assets/project/project-07.jpg" alt="3D视觉体验"><figcaption>06 3D视觉体验</figcaption></figure>
+        <figure><img src="assets/project/project-08.jpg" alt="MR大空间"><figcaption>07 MR大空间</figcaption></figure>
+        <figure><img src="assets/project/project-09.jpg" alt="悦动格子"><figcaption>08 悦动格子</figcaption></figure>
+        <figure><img src="assets/project/project-10.jpg" alt="智造创刻工坊"><figcaption>09 智造创刻工坊</figcaption></figure>
+        <figure><img src="assets/project/project-11.jpg" alt="AI眼镜体验"><figcaption>10 AI眼镜体验</figcaption></figure>
+        <figure><img src="assets/project/project-12.jpg" alt="投篮机器人"><figcaption>11 投篮机器人</figcaption></figure>
+        <figure><img src="assets/project/project-13.jpg" alt="RC越野"><figcaption>12 RC越野</figcaption></figure>
+        <figure><img src="assets/project/project-14.jpg" alt="机甲战车"><figcaption>13 机甲战车</figcaption></figure>
+        <figure><img src="assets/project/project-15.jpg" alt="弹无虚发"><figcaption>14 弹无虚发</figcaption></figure>
+        <figure><img src="assets/project/project-16.jpg" alt="Rocky足球"><figcaption>15 Rocky足球</figcaption></figure>
+        <figure><img src="assets/project/project-17.jpg" alt="机甲塔防"><figcaption>16 机甲塔防</figcaption></figure>
+        <figure><img src="assets/project/project-18.jpg" alt="机甲足球"><figcaption>17 机甲足球</figcaption></figure>
+        <figure><img src="assets/project/project-19.jpg" alt="地心历险"><figcaption>18 地心历险</figcaption></figure>
+        <figure><img src="assets/project/project-20.jpg" alt="保龄球大战"><figcaption>19 保龄球大战</figcaption></figure>
+        <figure><img src="assets/project/project-21.jpg" alt="点球大战"><figcaption>20 点球大战</figcaption></figure>
+        <figure><img src="assets/project/project-22.jpg" alt="农场星乐园"><figcaption>21 农场星乐园</figcaption></figure>
+        <figure><img src="assets/project/project-23.jpg" alt="飞跃太空"><figcaption>22 飞跃太空</figcaption></figure>
+        <figure><img src="assets/project/project-24.jpg" alt="飞天足球"><figcaption>23 飞天足球</figcaption></figure>
+        <figure><img src="assets/project/project-25.jpg" alt="未来之城"><figcaption>24 未来之城</figcaption></figure>
+        <figure><img src="assets/project/project-26.jpg" alt="火星救援"><figcaption>25 火星救援</figcaption></figure>
+        <figure><img src="assets/project/project-27.jpg" alt="脑机星球"><figcaption>26 脑机星球</figcaption></figure>
+        <figure><img src="assets/project/project-28.jpg" alt="脑控赛车"><figcaption>27 脑控赛车</figcaption></figure>
+        <figure><img src="assets/project/project-29.jpg" alt="PS Switch体验"><figcaption>28 PS/Switch体验</figcaption></figure>
+        <figure><img src="assets/project/project-30.jpg" alt="小派8K超高清VR体验"><figcaption>30 小派8K超高清VR体验</figcaption></figure>
+        <figure><img src="assets/project/project-31.jpg" alt="3D大屏电影"><figcaption>31 3D大屏电影</figcaption></figure>
+        <figure><img src="assets/project/project-32.jpg" alt="下棋机器人"><figcaption>32 下棋机器人</figcaption></figure>
+      </div>
+    </section>
+
+    <p class="footer">页面素材位于同级 assets 目录；photo-map.csv 与 project-photo-map.csv 用于内部追溯图片来源，对外发送时可只提供本页面及 assets 文件夹。</p>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" type="button" aria-label="关闭">×</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
+  </div>
+
+  <script>
+    const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = lightbox.querySelector("img");
+    const closeButton = lightbox.querySelector(".close");
+
+    document.querySelectorAll("main img, .timeline img").forEach((image) => {
+      image.addEventListener("click", () => {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = transparentPixel;
+    }
+
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>
